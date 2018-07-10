@@ -140,7 +140,7 @@ sleepyGreeting
     })
     .catch( err => {
         console.error(err)
-    }); */
+    }); 
 
 
     //Stop trying to make "fetch" happen
@@ -158,7 +158,29 @@ sleepyGreeting
             console.log(err);
         });
     console.log(postsPromise);
-    console.log("after program has run");
+    console.log("after program has run");  */
+    
+    const greeting = new Promise ((resolve, reject) => {
+        resolve("Hi there :-)");
+        reject("Oops I did it again :-(");
+    });
+    
+    const updateAccount = new Promise ((resolve, reject) => {
+        resolve("Updating last login...");
+        reject("Error updating account with login");
+    });
+    
+    const loginActivities = Promise.all([greeting, updateAccount]);
+    
+    loginActivities.then(res => {
+        res.forEach(activity => {
+            console.log(activity);
+        })
+    })
+    
+    
+    
+    
 
 
 
