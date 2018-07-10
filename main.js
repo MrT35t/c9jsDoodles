@@ -147,6 +147,16 @@ sleepyGreeting
     console.log("starting fetch call");
     const postsPromise = fetch("https://api.dailysmarty.com/posts");
     console.log("after fetch call");
+    postsPromise
+        .then (data => data.json())
+        .then (data => {
+            data.posts.forEach((item) => {
+                console.log(item.url_for_post);
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     console.log(postsPromise);
     console.log("after program has run");
 
