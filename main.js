@@ -158,8 +158,10 @@ sleepyGreeting
             console.log(err);
         });
     console.log(postsPromise);
-    console.log("after program has run");  */
+    console.log("after program has run");  
     
+    
+    //grouping promises together
     const greeting = new Promise ((resolve, reject) => {
         resolve("Hi there :-)");
         reject("Oops I did it again :-(");
@@ -176,10 +178,37 @@ sleepyGreeting
         res.forEach(activity => {
             console.log(activity);
         })
-    })
+    })      */
     
     
+    //Intro to Async and Await
+    const login = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("user logged in...");
+            }, 2000);  
+        });
+    }
     
+    
+    const updateAccount = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("updating last login...");
+            }, 2000);  
+        });
+    }
+    
+    
+    async function loginActivities() { 
+        const returnedLogin = await login();
+        console.log(returnedLogin);
+        
+        const returnedUpdateAccount = await updateAccount();
+        console.log(returnedUpdateAccount);
+    }
+    
+    loginActivities();
     
 
 
