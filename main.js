@@ -178,10 +178,10 @@ sleepyGreeting
         res.forEach(activity => {
             console.log(activity);
         })
-    })      */
+    })      
     
     
-    //Intro to Async and Await
+//Intro to Async and Await
     const login = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -208,7 +208,41 @@ sleepyGreeting
         console.log(returnedUpdateAccount);
     }
     
-    loginActivities();
+    loginActivities();    */
+    
+    
+    
+//closures, built off of the above example
+    const login = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("user logged in...");
+            }, 2000);  
+        });
+    }
+    
+    
+    const updateAccount = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("updating last login...");
+            }, 2000);  
+        });
+    }
+    
+    
+    async function loginActivities(_login, _updateAccount) { 
+        const returnedLogin = await _login;
+        console.log(returnedLogin);
+        
+        const returnedUpdateAccount = await _updateAccount;
+        console.log(returnedUpdateAccount);
+    }
+    
+    loginActivities(login(), updateAccount()); 
+    
+
+
     
 
 
