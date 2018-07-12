@@ -208,7 +208,7 @@ sleepyGreeting
         console.log(returnedUpdateAccount);
     }
     
-    loginActivities();    */
+    loginActivities(); 
     
     
     
@@ -217,7 +217,7 @@ sleepyGreeting
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve("user logged in...");
-            }, 2000);  
+            }, 4000);  
         });
     }
     
@@ -239,7 +239,24 @@ sleepyGreeting
         console.log(returnedUpdateAccount);
     }
     
-    loginActivities(login(), updateAccount()); 
+    loginActivities(login(), updateAccount());     */
+    
+    
+//Async and Await with APIs
+//https://api.github.com/users/MrT35t/repos
+//https://api.dailysmarty.com/posts
+
+    async function queryAPIs() {
+        const postsPromise = fetch("https://api.dailysmarty.com/posts");
+        const posts = await postsPromise.then(res => res.json());
+        console.log(posts);
+        
+        const reposPromise = fetch("https://api.github.com/users/MrT35t/repos");
+        const repos = await reposPromise.then(res => res.json());
+        console.log(repos);
+    }
+    
+    queryAPIs();
     
 
 
