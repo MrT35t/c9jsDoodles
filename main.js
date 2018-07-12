@@ -239,7 +239,7 @@ sleepyGreeting
         console.log(returnedUpdateAccount);
     }
     
-    loginActivities(login(), updateAccount());     */
+    loginActivities(login(), updateAccount());     
     
     
 //Async and Await with APIs
@@ -256,9 +256,34 @@ sleepyGreeting
         console.log(repos);
     }
     
-    queryAPIs();
+    queryAPIs();   */
     
+//Error handling inside async
 
+    
+    async function queryAPIs() {
+        try {
+            const postsPromise = fetch("https://api.dailysmarty.com/posts");
+            const posts = await postsPromise.then(res => res.json());
+            console.log(posts);
+        }catch(err) {
+            console.log(err);
+            console.log("Error with Daily Smarty API.");
+        }
+        
+        try {
+            const reposPromise = fetch("https://api.github.com/users/MrT35t/repos");
+            const repos = await reposPromise.then(res => res.json());
+            console.log(repos);
+        } catch(err) {
+            console.log(err);
+            console.log("Error with GitHub Repos API.");
+        }
+    }
+    
+    queryAPIs();
+
+    
 
     
 
